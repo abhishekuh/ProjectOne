@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ProjectOne</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="ProjectOne.css">
+</head>
+<body>
+	<div class="loginMainHolder">
+		<div class="loginHolder text-centre">
+			<span class="pageTwoHeading">Welcome to the Application !!!</span>
+			<div class="profileHolder">
+				<span class="profileHeading">Please provide your basic Details</span>
+					<form action="/profile" method="POST">
+						<div>
+							<span id="profileImage"></span>
+						</div>
+						<div>
+							<input id="profileUserName" type="username" class="inputCommonCls" placeholder="User Name">
+							<!-- <span id="profileUserName"></span> -->
+						</div>
+						<div>
+							<input id="profileEmail" type="email" class="inputCommonCls" placeholder="Email ID">
+							<!-- <span id="profileEmail"></span> -->
+						</div>
+						<span id="profileSaveBtn" class="loginButton">Save</span>
+					</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="Profile.js"></script>
+</body>
+</html>

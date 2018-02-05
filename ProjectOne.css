@@ -1,0 +1,47 @@
+.loginMainHolder{
+	min-height: 90vh;
+	padding: 200px 500px;
+}
+.loginHolder{
+	box-shadow: 0px 0px 10px 0px lightgrey;
+	padding: 20px 10px;
+	text-align: center;
+}
+.loginHeading{
+	font-size: 20px;
+	color: orange;
+	padding-bottom: 20px;
+    display: block;
+}
+.pageTwoHeading{
+	font-size: 20px;
+	color: orange;
+    display: block;
+}
+.loginButton{
+	width: 100px;
+	padding: 5px;
+	box-shadow: 0px 0px 5px 0px lightgrey;
+	border-radius: 3px;
+	text-align: center;
+	cursor: pointer;
+	background: orange;
+	color: white;
+	margin: auto;
+	line-height: 1.5em;
+}
+.inputCommonCls{
+	border:1px solid lightgrey;
+	display: block;
+	margin: auto;
+	margin-bottom: 10px;
+	padding: 5px 0px 5px 10px;
+	border-radius: 3px;
+}
+.inputCommonCls:focus{
+	outline: none;
+}
+.profileHeading {
+    padding: 10px;
+    display: block;
+}
