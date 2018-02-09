@@ -4,6 +4,6 @@ function myFunction(){
 	$('#button').on('click',functionTwo);
 }
 function functionTwo(){
-	window.location.href="Profile.html";
+	window.location.href="Project.html";
 	window.alert("You are Logging In...");
 }

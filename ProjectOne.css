@@ -20,7 +20,7 @@
 }
 .loginButton{
 	width: 100px;
-	padding: 5px;
+	padding: 5px 20px;
 	box-shadow: 0px 0px 5px 0px lightgrey;
 	border-radius: 3px;
 	text-align: center;
@@ -34,6 +34,7 @@
 	border:1px solid lightgrey;
 	display: block;
 	margin: auto;
+	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 5px 0px 5px 10px;
 	border-radius: 3px;
@@ -44,4 +45,17 @@
 .profileHeading {
     padding: 10px;
     display: block;
+}
+.profileImage{
+	background-image: url('/profile.jpg');
+	width: 150px;
+	height: 150px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	display: block;
+	margin: auto; 
+}
+.profileMainHolder{
+	padding: 110px 500px;
 }

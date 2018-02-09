@@ -1,4 +1,3 @@
-var http = require('http');
 var fs 	 = require('fs');
 var url	 = require('url');
 var express = require('express');
@@ -8,36 +7,65 @@ var path 	= require('path');
 var serveStatic = require('serve-static');
 var router = express.Router();
 var bodyparser = require('body-parser');
+var mongo = require('mongoskin');
+var MongoClient = require('mongodb').MongoClient;
+var mongourl = 'mongodb://localhost:27017';
 
-http.createServer(function(req,res){
+// creating socket for server
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+// var socket = io.connect('//localhost:5555', {reconnect: true});
 
-	app.use(serveStatic(path.join(__dirname, 'public')));
-	app.use(bodyparser.urlencoded({extended:true}))
+app.use(express.static('public'));
 
-	var q= url.parse(req.url, true);
-	var filename = "."+q.pathname;
+// app.use(bodyparser.urlencoded({extended:true}))
 
-	fs.readFile(filename, function(err,result){
-		if(err){
-			res.writeHead(404);
-			return res.end("404 Not Found");
-		}
-		res.writeHead(200);
-		res.write(result);
-		return res.end();
+	io.on('connection',function(){
+		console.log('User is connected and socket.io listening'.green);
+		
+		connectToDB(function (err,res){
+			if(err){
+				console.log('error connecting to db');
+				return;
+			}
+			if(res){
+				console.log('connected to abhiDB');
+			}
+		});
+
+		io.on('disconnect',function(){
+			console.log('User disconnected');
+		})
+
+		io.on("PROFILE_DATA",saveProfileInfo);
+
 	});
 
-	app.post('/profile',function(req,res){
-		console.log(req.body);
-	})
-	// app.post('/profile', function(req,res){
-	// 	console.log('Hello')
-	// })
+	app.get('/', function(req, res) {
+    res.sendFile(__dirname +"/index.html");
+	});
 
+	function connectToDB(cb){
+		MongoClient.connect(mongourl,function(err,dbCon){
+			if(err){
+				throw err;
+				return;
+			}
+			db=dbCon.db('abhiDB');
+			cb(null,true);
+		});
+	};
 
-	// app.get('/',function(req,res){
-	// 	res.sendFile('__dirname'+'/ProjectOne.html');
-	// })
+	function saveProfileInfo(data){
+		db.collection('abhi').save(data, function(err,res){
+			if(err){
+				return;
+				console.log(err);
+			}
+			console.log('saved to db');
+		});
+	};
 
-}).listen(4444);
-console.log("server started".green);
+server.listen(5555,function (){
+	console.log("server Started".green);
+})
